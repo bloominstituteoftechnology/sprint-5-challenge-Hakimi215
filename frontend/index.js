@@ -17,6 +17,16 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
     console.log('User', userAllData);
     console.log('Mentors', mentorAllData);
 
+        //// Select the cards container element
+        const cards = document.querySelector('.cards');
+        console.log('Empty cards right now!', cards);
+    
+        /// Iterate over each user data
+        userAllData.forEach((userData) => {
+          /// create a new card for each user
+          const cardSelected = document.createElement('div');
+          cards.appendChild(cardSelected);
+          cardSelected.classList.add('card', 'selected');
   
 } catch (err) {
   /// log error if fetching data fails
