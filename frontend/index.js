@@ -8,6 +8,15 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
       axios.get('http://localhost:3003/api/mentors')
     ]);
 
+
+    /// Extracting data arrays from the reponses
+    const userAllData = userData.data;
+    const mentorAllData = mentorData.data;
+
+    //// log user and mentor data to the console
+    console.log('User', userAllData);
+    console.log('Mentors', mentorAllData);
+
   
 } catch (err) {
   /// log error if fetching data fails
