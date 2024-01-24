@@ -27,6 +27,17 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
           const cardSelected = document.createElement('div');
           cards.appendChild(cardSelected);
           cardSelected.classList.add('card', 'selected');
+
+                //// create elements for user information
+      const nameAndId = document.createElement('h3');
+      nameAndId.textContent = `${userData.fullName} ID: ${userData.id}`;
+
+      const email = document.createElement('div');
+      email.textContent = `${userData.email}`;
+
+      /// Append user information to the cared
+      cardSelected.appendChild(nameAndId);
+      cardSelected.appendChild(email);
   
 } catch (err) {
   /// log error if fetching data fails
