@@ -86,6 +86,14 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
       listItem.textContent = `${mentorData.firstName} ${mentorData.lastName}`;
       listContainer.appendChild(listItem);
     });
+
+      /// Add click event listerner to toggle open/ close state
+  mentorName.addEventListener('click', () => {
+    mentorName.classList.toggle('open');
+    mentorName.classList.toggle('close');
+    listContainer.style.display = mentorName.classList.contains('open') ? 'block' : 'none';
+  });
+}
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
 
