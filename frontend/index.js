@@ -38,6 +38,29 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
       /// Append user information to the cared
       cardSelected.appendChild(nameAndId);
       cardSelected.appendChild(email);
+
+
+            /// Create elements for mentor section
+            const mentorSection = document.createElement('div');
+            cardSelected.appendChild(mentorSection);
+        
+            const mentorName = document.createElement('h4');
+            mentorName.textContent = 'Mentors';
+            mentorName.classList.add('open', 'close');
+            mentorSection.appendChild(mentorName);
+        
+            const unOrderList = document.createElement('ul');
+            mentorSection.appendChild(unOrderList);
+      
+            //// Filter mentors associated with the current user
+            const mentorsForUser = mentorAllData.filter((mentorData) => mentorData.learnerId === userData.id);
+            
+            /// Render mentors for the user
+            renderMentors(mentorsForUser, unOrderList, mentorName);
+      
+           
+          });
+      
   
 } catch (err) {
   /// log error if fetching data fails
