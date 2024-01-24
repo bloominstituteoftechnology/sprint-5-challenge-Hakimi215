@@ -70,6 +70,22 @@ async function sprintChallenge5() { // Note the async keyword, in case you wish 
   const currentYear = new Date().getFullYear()
   footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`
 
+    //// set the footer content with the current year
+    const footer = document.querySelector('footer');
+    const currentYear = new Date().getFullYear();
+    footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`;
+  }
+  
+  /// function to render mentors in the list container with toggle functionality
+  function renderMentors(mentors, listContainer, mentorName) {
+    /// Iterate over each mentor data
+    mentors.forEach((mentorData) => {
+      
+      //// create a list item for each mentor
+      const listItem = document.createElement('li');
+      listItem.textContent = `${mentorData.firstName} ${mentorData.lastName}`;
+      listContainer.appendChild(listItem);
+    });
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
 
