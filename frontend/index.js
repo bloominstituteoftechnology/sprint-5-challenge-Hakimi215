@@ -29,7 +29,7 @@ async function sprintChallenge5() {
       cardSelected.classList.add('card');
 
       //// create elements for user information
-      const nameAndId = document.createElement('h4');
+      const nameAndId = document.createElement('h3');
       nameAndId.textContent = `${userData.fullName} ID: ${userData.id}`;
 
       const email = document.createElement('div');
@@ -56,26 +56,84 @@ async function sprintChallenge5() {
     // /selectLearner.classList.add('selectedStatus');
 
 
-      // Add this line at the beginning to get a reference to the status element
+      
 const selectedStatus = document.querySelector('.info');
+
+selectedStatus.textContent = 'No learner is selected' 
 
 
 cardSelected.addEventListener('click', evt => {
+  // Toggle 'selected' class on the clicked card
+  cardSelected.classList.toggle('selected');
 
-  //// selectedStatus.textContent = 'No learner is selected.' 
-  //// Remove 'selected' class from all cards
+  // Check if the card is now selected
+  if (cardSelected.classList.contains('selected')) {
+    // Update the selected status text
+    selectedStatus.textContent = `The selected learner is ${userData.fullName}`;
+  } else {
+    // If not selected, update the status to indicate no learner is selected
+    selectedStatus.textContent = 'No learner is selected';
+  }
+
+  // Remove 'selected' class from all other cards
   document.querySelectorAll('.card.selected').forEach(card => {
-    card.classList.remove('selected');
+    if (card !== cardSelected) {
+      card.classList.remove('selected');
+    }
   });
-
-  //// Add 'selected' class to the clicked card
-  cardSelected.classList.add('selected');
-
-  //// Update the selected status text
-   selectedStatus.querySelector('h3')
-   selectedStatus.textContent = `The selected learner is ${userData.fullName}`;
-  
 });
+
+
+    
+
+// cardSelected.addEventListener('click', evt => {
+
+
+// //   //// Add 'selected' class to the clicked card
+// //   if(!cardSelected.classList.contains('selected')){
+// //    //// Update the selected status text
+// //    cardSelected.classList.add('selected');
+// //    selectedStatus.querySelector('h3')
+// //    selectedStatus.textContent = `The selected learner is ${userData.fullName}`;
+   
+ 
+
+// //   } else {
+ 
+// //    cardSelected.classList.remove('selected')
+// //    selectedStatus.textContent = 'No learner is selected';
+// //   } 
+
+// // });
+
+//   //  //// Remove 'selected' class from all cards
+//   //  document.querySelectorAll('.card.selected').forEach(card => {
+//   //   card.classList.remove('selected');
+//   // });
+//   //   }
+
+//   //// Add 'selected' class to the clicked card
+//   if(cardSelected.classList.contains('selected')){
+//      //// Remove 'selected' class from all cards
+//      document.querySelectorAll('.card.selected').forEach(card => {
+//       card.classList.remove('selected');
+//     })   
+
+//    } else if(!cardSelected.classList.contains('selected')){
+
+//      //// Update the selected status text
+//      cardSelected.classList.add('selected');
+//      selectedStatus.querySelector('h3')
+//      selectedStatus.textContent = `The selected learner is ${userData.fullName}`;
+
+//     }
+//     else {
+//       cardSelected.classList.remove('selected')
+//       selectedStatus.textContent = 'No learner is selected';
+   
+//    } 
+ 
+//  });
 
 
       //// userData is learners from api and mentors is the mentors inside the learners array. mentorAllData is the mentors data from the api. here I am muching the mentors id to the learners's mentor id.
@@ -94,7 +152,7 @@ cardSelected.addEventListener('click', evt => {
   //// set the footer content with the current year
   const footer = document.querySelector('footer');
   const currentYear = new Date().getFullYear();
-  footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`;
+  footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY 2023`;
 }
 
 ////
