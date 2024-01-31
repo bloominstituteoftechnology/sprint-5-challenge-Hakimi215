@@ -26,7 +26,7 @@ async function sprintChallenge5() {
       /// create a new card for each user
       const cardSelected = document.createElement('div');
       cards.appendChild(cardSelected);
-      cardSelected.classList.add('card', 'selected');
+      cardSelected.classList.add('card');
 
       //// create elements for user information
       const nameAndId = document.createElement('h4');
@@ -46,14 +46,14 @@ async function sprintChallenge5() {
   
       const mentorName = document.createElement('h4');
       mentorName.textContent = 'Mentors';
-      mentorName.classList.add('open', 'close');
+      mentorName.classList.add('closed');
       mentorSection.appendChild(mentorName);
   
       const unOrderList = document.createElement('ul');
       mentorSection.appendChild(unOrderList);
 
-    //   const selectLearner = document.createElement('p');
-    // selectLearner.classList.add('selectedStatus');
+    ///   const selectLearner = document.createElement('p');
+    // /selectLearner.classList.add('selectedStatus');
 
 
       // Add this line at the beginning to get a reference to the status element
@@ -62,16 +62,16 @@ const selectedStatus = document.querySelector('.info');
 
 cardSelected.addEventListener('click', evt => {
 
-  selectedStatus.textContent = 'No learner is selected.'
-  // Remove 'selected' class from all cards
-  document.querySelectorAll('.selected.card').forEach(card => {
+  //// selectedStatus.textContent = 'No learner is selected.' 
+  //// Remove 'selected' class from all cards
+  document.querySelectorAll('.card.selected').forEach(card => {
     card.classList.remove('selected');
   });
 
-  // Add 'selected' class to the clicked card
+  //// Add 'selected' class to the clicked card
   cardSelected.classList.add('selected');
 
-  // Update the selected status text
+  //// Update the selected status text
    selectedStatus.querySelector('h3')
    selectedStatus.textContent = `The selected learner is ${userData.fullName}`;
   
@@ -80,7 +80,7 @@ cardSelected.addEventListener('click', evt => {
 
       //// userData is learners from api and mentors is the mentors inside the learners array. mentorAllData is the mentors data from the api. here I am muching the mentors id to the learners's mentor id.
       const mentorsForUser = userData.mentors.map(mentorId => mentorAllData.find(mentor => mentor.id === mentorId))
-      console.log('FavMentorsssss', mentorsForUser);
+      // console.log('FavMentorsssss', mentorsForUser);
 
       renderMentors(mentorsForUser, unOrderList, mentorName);
      
@@ -118,6 +118,23 @@ function renderMentors(mentors, listContainer, mentorName) {
 
   
 }
+
+
+function getWeather(){
+  return new Promise(function(resolve, reject){
+    resolve('Sunny')
+  })
+}
+
+function onSucces(succes){
+  console.log(`The weather is: ${succes}`)
+}
+function onError(error){
+  console.log(`Error${error}`)
+}
+
+getWeather().then(onSucces, onError)
+
 
 // ❗ DO NOT CHANGE THE CODE BELOW
 if (typeof module !== 'undefined' && module.exports) module.exports = { sprintChallenge5 };
